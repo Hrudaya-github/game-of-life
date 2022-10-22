@@ -8,17 +8,26 @@ pipeline {
         }
         stage('Unit Testing'){
             steps {
-                sh script:'mvn test'
+                script {
+                    sh 'mvn test'
+                }
+                
             }
         }
         stage('Integration Testing'){
             steps {
-                sh script:'mvn verify -DskipUnitTests'
+                script {
+                    sh 'mvn verify -DskipUnitTests'
+                }
+                
             }
         }
         stage('Maven Build'){
             steps {
-                sh 'mvn clean install'
+                script {
+                    sh 'mvn clean install'
+                }
+                
             }
         }
         stage('Build & Sonarqube Analysis'){
